@@ -32,28 +32,28 @@ onMounted(() => {
     </a>
     
     <!-- Navigation Bar - Fixed at top -->
-    <Navbar />
+    <LandingNavbar />
     
     <!-- Main Content -->
     <main id="main-content" tabindex="-1" aria-label="Main content">
       <!-- Hero Section - Above the fold -->
-      <Hero />
+      <LandingHero />
       
       <!-- Services Section -->
-      <ServicesSection id="services" />
+      <LandingServicesSection id="services" />
       
       <!-- Features Section -->
-      <FeaturesSection id="features" />
+      <LandingFeaturesSection id="features" />
       
       <!-- Stats/Operational Precision Section -->
-      <StatsSection id="network" />
+      <LandingStatsSection id="network" />
       
       <!-- Call-to-Action Section -->
-      <CTASection id="contact" />
+      <LandingCTASection id="contact" />
     </main>
     
     <!-- Footer -->
-    <Footer />
+    <LandingFooter />
     
     <!-- Nuxt Page for routing (if needed) -->
     <NuxtPage />
