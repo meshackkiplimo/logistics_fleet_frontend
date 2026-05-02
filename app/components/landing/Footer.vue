@@ -47,13 +47,17 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-  <footer class="bg-gray-900 text-gray-300">
+  <footer class="bg-gray-900 text-gray-300" role="contentinfo" aria-label="Site footer">
     <Container>
-      <div class="py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div class="py-10 sm:py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 px-4 sm:px-0">
           <!-- Logo and Tagline -->
           <div class="lg:col-span-1">
-            <a href="#" class="inline-block text-2xl font-bold text-white mb-4">
+            <a 
+              href="#" 
+              class="inline-block text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md px-2"
+              aria-label="LogiTrack home"
+            >
               LogiTrack
             </a>
             <p class="text-sm text-gray-400 leading-relaxed">
@@ -62,90 +66,93 @@ const currentYear = new Date().getFullYear();
           </div>
 
           <!-- Solutions Column -->
-          <div>
-            <h3 class="text-white font-semibold text-lg mb-4">Solutions</h3>
-            <ul class="space-y-3">
+          <nav aria-labelledby="footer-solutions">
+            <h3 id="footer-solutions" class="text-white font-semibold text-base sm:text-lg mb-3 sm:mb-4">Solutions</h3>
+            <ul class="space-y-2 sm:space-y-3">
               <li v-for="link in solutionsLinks" :key="link.label">
                 <a 
                   :href="link.href" 
-                  class="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  class="text-gray-400 hover:text-white transition-colors duration-200 text-sm inline-block py-1 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md"
                 >
                   {{ link.label }}
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
           <!-- Company Column -->
-          <div>
-            <h3 class="text-white font-semibold text-lg mb-4">Company</h3>
-            <ul class="space-y-3">
+          <nav aria-labelledby="footer-company">
+            <h3 id="footer-company" class="text-white font-semibold text-base sm:text-lg mb-3 sm:mb-4">Company</h3>
+            <ul class="space-y-2 sm:space-y-3">
               <li v-for="link in companyLinks" :key="link.label">
                 <a 
                   :href="link.href" 
-                  class="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  class="text-gray-400 hover:text-white transition-colors duration-200 text-sm inline-block py-1 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md"
                 >
                   {{ link.label }}
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
           <!-- Connect Column -->
-          <div>
-            <h3 class="text-white font-semibold text-lg mb-4">Connect</h3>
-            <ul class="space-y-3">
+          <nav aria-labelledby="footer-connect">
+            <h3 id="footer-connect" class="text-white font-semibold text-base sm:text-lg mb-3 sm:mb-4">Connect</h3>
+            <ul class="space-y-2 sm:space-y-3">
               <li v-for="link in connectLinks" :key="link.label">
                 <a 
                   :href="link.href" 
-                  class="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  class="text-gray-400 hover:text-white transition-colors duration-200 text-sm inline-block py-1 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md"
                 >
                   {{ link.label }}
                 </a>
               </li>
             </ul>
             
-            <!-- Social Media Icons -->
-            <div class="mt-6">
-              <div class="flex space-x-4">
+            <!-- Social Media Icons - Minimum 44x44px touch targets -->
+            <div class="mt-4 sm:mt-6">
+              <div class="flex space-x-3 sm:space-x-4" role="list" aria-label="Social media links">
                 <a
                   v-for="social in socialLinks"
                   :key="social.name"
                   :href="social.href"
-                  :aria-label="social.name"
-                  class="text-gray-400 hover:text-white transition-colors duration-200"
+                  :aria-label="`Visit our ${social.name} page`"
+                  class="text-gray-400 hover:text-white transition-colors duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md"
+                  role="listitem"
                 >
                   <svg 
                     class="w-6 h-6" 
                     fill="currentColor" 
                     viewBox="0 0 24 24"
-                    :aria-hidden="true"
+                    aria-hidden="true"
                   >
                     <path :d="social.icon" />
                   </svg>
                 </a>
               </div>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
 
       <!-- Bottom Bar with Copyright and Legal Links -->
-      <div class="border-t border-gray-800 py-6">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <div class="border-t border-gray-800 py-5 sm:py-6 px-4 sm:px-0">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
           <p class="text-sm text-gray-400">
             © {{ currentYear }} LogiTrack. All rights reserved.
           </p>
-          <div class="flex space-x-6">
-            <a
-              v-for="link in legalLinks"
-              :key="link.label"
-              :href="link.href"
-              class="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-            >
-              {{ link.label }}
-            </a>
-          </div>
+          <nav aria-label="Legal links">
+            <ul class="flex space-x-4 sm:space-x-6">
+              <li v-for="link in legalLinks" :key="link.label">
+                <a
+                  :href="link.href"
+                  class="text-sm text-gray-400 hover:text-white transition-colors duration-200 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md px-2"
+                >
+                  {{ link.label }}
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </Container>

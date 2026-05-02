@@ -35,21 +35,28 @@ const services: Service[] = [
 </script>
 
 <template>
-  <section class="py-20 bg-white">
+  <section 
+    class="py-16 sm:py-20 bg-white"
+    aria-labelledby="services-heading"
+  >
     <Container>
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900 mb-4">
+      <div class="text-center mb-10 sm:mb-12 px-4 sm:px-0">
+        <h2 id="services-heading" class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
           Integrated Multi-Modal Solutions
         </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
           Comprehensive logistics services tailored to your business needs
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div 
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+        role="list"
+        aria-label="Logistics services"
+      >
         <ServiceCard 
           v-for="service in services" 
           :key="service.id" 
-          :service="service" 
+          :service="service"
         />
       </div>
     </Container>
