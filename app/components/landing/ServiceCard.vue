@@ -4,6 +4,7 @@ interface Service {
   title: string;
   description: string;
   image: string;
+  tag: string;
 }
 
 interface Props {
@@ -14,30 +15,39 @@ defineProps<Props>();
 </script>
 
 <template>
-  <article 
-    class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[280px] sm:min-h-[320px] focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
+  <article
+    class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 h-80 cursor-pointer focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
     role="listitem"
     tabindex="0"
     :aria-label="`${service.title}: ${service.description}`"
   >
-    <NuxtImg 
-      :src="service.image" 
-      :alt="`${service.title} - Professional logistics service for ${service.description}`" 
-      class="w-full h-full min-h-[280px] sm:min-h-[320px] object-cover"
+    <!-- Image -->
+    <NuxtImg
+      :src="service.image"
+      :alt="service.title"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       loading="lazy"
       width="800"
       height="600"
       sizes="sm:100vw md:50vw lg:25vw"
       format="webp"
       quality="80"
-      placeholder
-      role="img"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
-      <div class="absolute bottom-0 p-5 sm:p-6 text-white">
-        <h3 class="text-lg sm:text-xl font-semibold mb-2">{{ service.title }}</h3>
-        <p class="text-sm text-gray-200 leading-relaxed">{{ service.description }}</p>
-      </div>
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent transition-opacity duration-300" />
+
+    <!-- Mode badge -->
+    <div class="absolute top-4 left-4">
+      <span class="inline-block px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold uppercase tracking-wide">
+        {{ service.tag }}
+      </span>
+    </div>
+
+    <!-- Text content -->
+    <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+      <h3 class="text-lg font-bold mb-1.5 leading-tight">{{ service.title }}</h3>
+      <p class="text-sm text-slate-300 leading-relaxed">{{ service.description }}</p>
     </div>
   </article>
 </template>

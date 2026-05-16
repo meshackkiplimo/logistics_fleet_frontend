@@ -2,6 +2,7 @@
 interface Feature {
   id: string;
   icon: string;
+  step: string;
   title: string;
   description: string;
 }
@@ -10,53 +11,61 @@ const features: Feature[] = [
   {
     id: 'cargo-intake',
     icon: 'truck',
+    step: '01',
     title: 'Cargo Intake',
-    description: 'Seamless pickup and intake process with real-time confirmation'
+    description: 'Seamless pickup and intake process with real-time confirmation and digital documentation'
   },
   {
     id: 'tracking',
     icon: 'map-pin',
+    step: '02',
     title: 'Real-Time Tracking',
-    description: 'Track every movement with precision GPS and milestone updates'
+    description: 'Track every movement with precision GPS and automated milestone notifications'
   },
   {
     id: 'transit',
     icon: 'clock',
-    title: 'Real-Time Transit',
-    description: 'Optimized routing and transit with predictive ETA calculations'
+    step: '03',
+    title: 'In-Transit Optimization',
+    description: 'AI-driven routing with predictive ETA and live rerouting around disruptions'
   },
   {
     id: 'fulfillment',
     icon: 'check-circle',
+    step: '04',
     title: 'Final Fulfillment',
-    description: 'Proof of delivery with signature capture and photo documentation'
+    description: 'Proof of delivery with digital signature capture and photo documentation'
   }
 ];
 </script>
 
 <template>
-  <section 
-    class="py-16 sm:py-20 bg-gray-50"
+  <section
+    class="py-20 sm:py-28 bg-slate-50"
     aria-labelledby="features-heading"
   >
     <Container>
-      <div class="text-center mb-10 sm:mb-12 px-4 sm:px-0">
-        <h2 id="features-heading" class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+      <!-- Section header -->
+      <div class="text-center mb-14">
+        <span class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">How It Works</span>
+        <h2 id="features-heading" class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
           Precision Transit Flow
         </h2>
-        <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+        <p class="text-slate-500 text-lg max-w-xl mx-auto">
           Our integrated approach ensures seamless coordination at every stage of your shipment journey
         </p>
       </div>
-      <div 
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+
+      <!-- Feature cards -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         role="list"
         aria-label="Transit flow features"
       >
-        <FeatureCard 
-          v-for="feature in features" 
-          :key="feature.id" 
-          :feature="feature" 
+        <FeatureCard
+          v-for="feature in features"
+          :key="feature.id"
+          :feature="feature"
         />
       </div>
     </Container>

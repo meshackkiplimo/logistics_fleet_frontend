@@ -1,100 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-/*
- * ============================================================================
- * ACCESSIBILITY COMPLIANCE DOCUMENTATION
- * ============================================================================
- * 
- * This stylesheet implements WCAG 2.1 Level AA accessibility standards.
- * 
- * COLOR CONTRAST RATIOS (WCAG AA Requirements: 4.5:1 normal text, 3:1 large text)
- * -------------------------------------------------------------------------------
- * 
- * Primary Combinations:
- * - Primary text (#0F172A / slate-900) on white (#FFFFFF): 16.1:1 ✓✓
- * - Muted text (#64748B / slate-500) on white (#FFFFFF): 5.7:1 ✓
- * - White text (#FFFFFF) on primary blue (#1E40AF / blue-800): 8.6:1 ✓✓
- * - White text (#FFFFFF) on blue-600 (#2563EB): 7.0:1 ✓✓
- * - Blue-800 (#1E40AF) on white (#FFFFFF): 8.6:1 ✓✓
- * 
- * Footer Combinations:
- * - Gray-300 (#D1D5DB) on gray-900 (#111827): 9.7:1 ✓✓
- * - Gray-400 (#9CA3AF) on gray-900 (#111827): 7.5:1 ✓✓
- * - White (#FFFFFF) on gray-900 (#111827): 15.5:1 ✓✓
- * 
- * Interactive Elements:
- * - Slate-600 (#475569) on white (#FFFFFF): 7.5:1 ✓✓
- * - Green-500 (#10B981) on white (#FFFFFF): 3.4:1 (icons only, decorative)
- * - Blue-100 (#DBEAFE) background with blue-600 (#2563EB) icon: 3.1:1 (large/decorative)
- * 
- * CTA Section:
- * - White (#FFFFFF) on blue-600 (#2563EB): 7.0:1 ✓✓
- * - Blue-50 (#EFF6FF) on blue-600 (#2563EB): 6.2:1 ✓
- * 
- * KEYBOARD NAVIGATION & FOCUS INDICATORS
- * -------------------------------------------------------------------------------
- * - All interactive elements have visible focus indicators (2px solid outline)
- * - Focus indicators use high-contrast colors (blue-500 #3B82F6)
- * - Focus offset of 2px for clear separation from element
- * - Skip-to-main-content link for keyboard users
- * - All buttons and links are keyboard accessible
- * - Minimum touch target size: 44x44px (mobile)
- * 
- * SEMANTIC HTML & ARIA
- * -------------------------------------------------------------------------------
- * - Proper heading hierarchy (h1 → h2 → h3)
- * - Semantic HTML5 elements (nav, main, section, article, footer)
- * - ARIA labels for interactive elements
- * - ARIA landmarks for screen readers
- * - Alt text for all images
- * - Form labels and descriptions
- * 
- * RESPONSIVE DESIGN
- * -------------------------------------------------------------------------------
- * - Minimum font size: 14px (0.875rem) on mobile
- * - Minimum touch target: 44x44px on mobile devices
- * - Text remains readable at 200% zoom
- * - No horizontal scrolling at standard viewport sizes
- */
-
 @theme {
-  /* Colors */
+  --font-sans: 'Inter', system-ui, sans-serif;
+
   --color-primary: #1E40AF;
   --color-primary-light: #3B82F6;
   --color-primary-dark: #1E3A8A;
-  --color-secondary: #64748B;
   --color-accent: #10B981;
-  --color-background: #FFFFFF;
-  --color-background-alt: #F8FAFC;
-  --color-text: #0F172A;
-  --color-text-muted: #64748B;
+}
 
-  /* Typography */
-  --font-family-base: 'Inter', system-ui, sans-serif;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
-  --font-size-6xl: 3.75rem;
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, sans-serif;
+}
 
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 4rem;
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  /* Breakpoints */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
 }
